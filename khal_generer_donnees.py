@@ -2,7 +2,7 @@
 khal_generer_donnees.py
 =======================
 Génère automatiquement un dataset d'entraînement pour Khaal.
-Produit un fichier khal_dataset.jsonl prêt à l'emploi.
+Produit un fichier khaal_dataset.jsonl prêt à l'emploi.
 
 Usage:
     python khal_generer_donnees.py
@@ -110,7 +110,7 @@ def generer_dataset(nb_exemples_templates: int = 50) -> list:
     return dataset
 
 
-def sauvegarder_jsonl(dataset: list, fichier: str = "khal_dataset.jsonl"):
+def sauvegarder_jsonl(dataset: list, fichier: str = "khaal_dataset.jsonl"):
     """Sauvegarde le dataset au format JSONL (une ligne = un exemple)."""
     with open(fichier, "w", encoding="utf-8") as f:
         for exemple in dataset:

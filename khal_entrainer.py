@@ -45,8 +45,8 @@ def verifier_deps():
 
 # ── Chargement des données ────────────────────────────────────────────────────
 
-def charger_dataset(fichier: str = "khal_dataset.jsonl") -> list:
-    """Charge le dataset JSONL généré par khal_generer_donnees.py"""
+def charger_dataset(fichier: str = "khaal_dataset.jsonl") -> list:
+    """Charge le dataset JSONL généré par khaal_generer_donnees.py"""
     if not os.path.exists(fichier):
         print(f"❌ Fichier introuvable : {fichier}")
         print("   Lance d'abord : python khal_generer_donnees.py")
