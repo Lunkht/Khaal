@@ -18,7 +18,7 @@ de texte de 117 millions de paramètres, via HuggingFace Transformers.
 | `khal_generer_donnees.py` | Génère le dataset d'entraînement |
 | `khal_entrainer.py` | Lance l'entraînement ML |
 | `Khaal_Entrainement.ipynb` | Notebook Google Colab (recommandé) |
-| `khal_dataset.jsonl` | Dataset généré (créé automatiquement) |
+| `khaal_dataset.jsonl` | Dataset généré (créé automatiquement) |
 | `khal_modele_entraine/` | Modèle entraîné (créé automatiquement) |
 
 ---

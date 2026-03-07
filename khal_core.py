@@ -61,7 +61,7 @@ class MemoireConversation:
         minutes = int(delta.total_seconds() / 60)
         return f"{minutes} min" if minutes > 0 else "< 1 min"
 
-    def sauvegarder(self, fichier: str = "khal_memoire.json"):
+    def sauvegarder(self, fichier: str = "khaal_memoire.json"):
         data = {
             "historique": self.historique,
             "contexte_global": self.contexte_global,
@@ -69,7 +69,7 @@ class MemoireConversation:
         with open(fichier, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
-    def charger(self, fichier: str = "khal_memoire.json"):
+    def charger(self, fichier: str = "khaal_memoire.json"):
         try:
             with open(fichier, "r", encoding="utf-8") as f:
                 data = json.load(f)

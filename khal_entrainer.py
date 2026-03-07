@@ -229,7 +229,7 @@ def main():
     parser.add_argument("--epochs",   type=int, default=3,            help="Nombre d'epochs (défaut: 3)")
     parser.add_argument("--batch",    type=int, default=2,            help="Batch size (défaut: 2)")
     parser.add_argument("--modele",   type=str, default="gpt2",       help="Modèle de base HuggingFace (défaut: gpt2)")
-    parser.add_argument("--dataset",  type=str, default="khal_dataset.jsonl")
+    parser.add_argument("--dataset",  type=str, default="khaal_dataset.jsonl")
     parser.add_argument("--sortie",   type=str, default="khal_modele_entraine")
     parser.add_argument("--test-seulement", action="store_true",      help="Tester un modèle déjà entraîné")
     args = parser.parse_args()
