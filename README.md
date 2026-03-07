@@ -1,89 +1,67 @@
-# 🤖 Khal - Générateur de Texte Personnel
+# 🤖 KHAL — Intelligence Artificielle Générale
 
 ## Structure du projet
 
 ```
 khal/
-├── generateur_texte.py   ← Fichier principal (ton IA)
-└── memoire_ia.json       ← Créé automatiquement à l'exécution
+├── app.py              ← Serveur Flask (point d'entrée)
+├── khal_core.py        ← Cerveau de Khal (modules IA)
+├── requirements.txt    ← Dépendances Python
+├── khal_memoire.json   ← Créé automatiquement (mémoire persistante)
+└── templates/
+    └── index.html      ← Interface web
 ```
 
 ---
 
-## 🧩 Les 4 modules
+## 🚀 Lancement en local
 
-| Module | Rôle |
-|---|---|
-| `ModeleMarkov` | Apprend les enchaînements de mots depuis un texte |
-| `GenerateurContenu` | Crée du contenu structuré avec templates |
-| `MemoireIA` | Sauvegarde l'historique et les stats |
-| `Khal` | Assemble tout — c'est ton point d'entrée |
-
----
-
-## 🚀 Démarrage rapide
-
-```python
-from generateur_texte import Khal
-
-ia = Khal("Khal_v1")
-
-# Entraîner avec ton propre texte
-ia.apprendre("Ton texte ici. Plus il est long, mieux c'est !")
-
-# Générer du texte libre
-texte = ia.generer_texte_libre(longueur=50)
-print(texte)
-
-# Générer un article
-article = ia.generer_article(sujet="Mon Sujet", paragraphes=4)
-print(article)
-```
-
----
-
-## 🎨 Personnalisation
-
-### Ajouter des mots au vocabulaire
-```python
-ia.personnaliser("adjectifs_positifs", ["incroyable", "sublime"])
-ia.personnaliser("verbes_action", ["analyser", "optimiser"])
-```
-
-### Entraîner avec un fichier texte
-```python
-with open("mon_corpus.txt", "r", encoding="utf-8") as f:
-    contenu = f.read()
-ia.apprendre(contenu)
-```
-
-### Ajuster la précision Markov
-```python
-from generateur_texte import ModeleMarkov
-
-# ordre=1 → plus créatif/aléatoire
-# ordre=3 → plus fidèle au corpus
-modele = ModeleMarkov(ordre=3)
-```
-
----
-
-## 📈 Prochaines étapes
-
-- [ ] Connecter l'API OpenAI ou Anthropic pour plus de puissance
-- [ ] Ajouter une interface web avec Flask
-- [ ] Entraîner sur un vrai dataset (livres, articles...)
-- [ ] Ajouter un système de scoring pour améliorer les résultats
-- [ ] Implémenter un modèle de réseau de neurones simple (avec PyTorch)
-
----
-
-## 📦 Dépendances
-
-Aucune installation requise — uniquement la bibliothèque standard Python 3.x !
-
-Pour aller plus loin :
 ```bash
-pip install transformers torch  # Pour des modèles IA avancés
-pip install flask               # Pour une interface web
+# 1. Installer les dépendances
+pip install -r requirements.txt
+
+# 2. Lancer Khal
+python app.py
+
+# 3. Ouvrir dans le navigateur
+# → http://localhost:5000
 ```
+
+---
+
+## ☁️ Hébergement gratuit
+
+### Replit (le plus simple)
+1. Va sur https://replit.com
+2. Crée un projet Python
+3. Upload les fichiers
+4. Lance avec `python app.py`
+
+### PythonAnywhere
+1. Va sur https://pythonanywhere.com
+2. Upload les fichiers dans `/home/user/khal/`
+3. Configure une Web App Flask
+4. WSGI file : `from app import app as application`
+
+---
+
+## 🧩 Capacités de Khal
+
+| Capacité | Commande |
+|---|---|
+| Conversation générale | Écrire naturellement |
+| Génération de texte | "Génère un texte sur..." |
+| Analyse de texte | "analyse: [ton texte ici]" |
+| Statistiques session | Taper `stats` |
+| Réinitialiser | Bouton RESET ou taper `reset` |
+| Export conversation | Bouton EXPORT |
+
+---
+
+## 📈 Prochaines évolutions
+
+- [ ] Connecter l'API Anthropic/OpenAI pour une vraie IA
+- [ ] Ajouter un système d'authentification
+- [ ] Base de données pour la mémoire long terme
+- [ ] Mode multi-utilisateurs
+- [ ] Synthèse vocale (text-to-speech)
