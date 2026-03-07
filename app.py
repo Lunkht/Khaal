@@ -1,17 +1,17 @@
 """
-Khal — Serveur Web Flask
+Khaal — Serveur Web Flask
 """
 
 from flask import Flask, render_template, request, jsonify, session
-from khal_core import Khal
+from khal_core import Khaal
 import os
 import secrets
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
-# Instance globale de Khal
-khal = Khal()
+# Instance globale de Khaal
+khaal = Khaal()
 
 
 @app.route("/")
@@ -27,18 +27,18 @@ def chat():
     if not message:
         return jsonify({"error": "Message vide"}), 400
 
-    resultat = khal.repondre(message)
+    resultat = khaal.repondre(message)
     return jsonify(resultat)
 
 
 @app.route("/historique", methods=["GET"])
 def historique():
-    return jsonify({"historique": khal.get_historique()})
+    return jsonify({"historique": khaal.get_historique()})
 
 
 @app.route("/reset", methods=["POST"])
 def reset():
-    khal.memoire.effacer()
+    khaal.memoire.effacer()
     return jsonify({"status": "ok", "message": "Mémoire effacée."})
 
 
@@ -46,15 +46,15 @@ def reset():
 def status():
     return jsonify({
         "status": "online",
-        "version": Khal.VERSION,
-        "messages": khal.stats["messages_recus"],
-        "duree": khal.memoire.duree_session()
+        "version": Khaal.VERSION,
+        "messages": khaal.stats["messages_recus"],
+        "duree": khaal.memoire.duree_session()
     })
 
 
 if __name__ == "__main__":
     print("\n" + "="*50)
-    print("  🤖 KHAL — Intelligence Artificielle Générale")
+    print("  🤖 KHAAL — Intelligence Artificielle Générale")
     print("="*50)
     print("  → Serveur démarré sur http://localhost:5000")
     print("  → Ctrl+C pour arrêter")

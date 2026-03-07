@@ -5,7 +5,7 @@
 ██╔═██╗ ██╔══██║██╔══██║██║
 ██║  ██╗██║  ██║██║  ██║███████╗
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
-Khal — Intelligence Artificielle Générale
+Khaal — Intelligence Artificielle Générale
 """
 
 import json
@@ -92,7 +92,7 @@ class MoteurReponse:
     def __init__(self):
         self.regles = self._charger_regles()
         self.personnalite = {
-            "nom": "Khal",
+            "nom": "Khaal",
             "ton": "intelligent, direct, légèrement mystérieux",
             "style": "concis mais profond"
         }
@@ -104,17 +104,17 @@ class MoteurReponse:
             {
                 "patterns": ["bonjour", "salut", "hello", "hey", "bonsoir", "coucou"],
                 "reponses": [
-                    "Bonjour. Je suis Khal. Comment puis-je vous être utile ?",
-                    "Salut. Khal à votre service. Que souhaitez-vous ?",
+                    "Bonjour. Je suis Khaal. Comment puis-je vous être utile ?",
+                    "Salut. Khaal à votre service. Que souhaitez-vous ?",
                     "Bonsoir. Je vous écoute.",
                 ]
             },
             # Identité
             {
-                "patterns": ["qui es-tu", "qui êtes-vous", "tu es quoi", "c'est quoi khal", "présente-toi"],
+                "patterns": ["qui es-tu", "qui êtes-vous", "tu es quoi", "c'est quoi khaal", "présente-toi"],
                 "reponses": [
-                    "Je suis Khal — une intelligence artificielle générale. Je peux répondre à vos questions, générer du contenu, analyser des textes et mémoriser notre conversation.",
-                    "Khal. Une IA conçue pour raisonner, générer et analyser. Posez-moi n'importe quelle question.",
+                    "Je suis Khaal — une intelligence artificielle générale. Je peux répondre à vos questions, générer du contenu, analyser des textes et mémoriser notre conversation.",
+                    "Khaal. Une IA conçue pour raisonner, générer et analyser. Posez-moi n'importe quelle question.",
                 ]
             },
             # Capacités
@@ -273,7 +273,7 @@ class MoteurReponse:
             )
 
         return (
-            "Intéressant. Je suis Khal — posez-moi une question, "
+            "Intéressant. Je suis Khaal — posez-moi une question, "
             "demandez-moi de générer ou d'analyser du contenu."
         )
 
@@ -305,12 +305,12 @@ class MoteurReponse:
 
 
 # ============================================================
-# MODULE 3 : KHAL — L'IA PRINCIPALE
+# MODULE 3 : KHAAL — L'IA PRINCIPALE
 # ============================================================
 
-class Khal:
+class Khaal:
     """
-    Khal — Intelligence Artificielle Générale
+    Khaal — Intelligence Artificielle Générale
     Point d'entrée principal du système.
     """
 
@@ -371,7 +371,7 @@ class Khal:
             type_reponse = "conversation"
 
         # Enregistrer la réponse
-        self.memoire.ajouter("khal", reponse)
+        self.memoire.ajouter("khaal", reponse)
         self.stats["messages_envoyes"] += 1
 
         # Sauvegarder périodiquement
@@ -392,7 +392,7 @@ class Khal:
             f"• Réponses générées : **{self.stats['messages_envoyes']}**\n"
             f"• Durée session : **{self.memoire.duree_session()}**\n"
             f"• Échanges mémorisés : **{len(self.memoire.historique)}**\n"
-            f"• Version Khal : **{self.VERSION}**"
+            f"• Version Khaal : **{self.VERSION}**"
         )
 
     def get_historique(self) -> list:

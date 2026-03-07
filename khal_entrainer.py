@@ -2,7 +2,7 @@
 khal_entrainer.py
 =================
 Entraîne un vrai modèle de génération de texte (GPT-2)
-sur les données personnalisées de Khal via HuggingFace Transformers.
+sur les données personnalisées de Khaal via HuggingFace Transformers.
 
 Prérequis :
     pip install torch transformers datasets accelerate
@@ -195,7 +195,7 @@ def tester_modele(dossier_modele: str):
     ]
 
     print("\n" + "="*60)
-    print("RÉSULTATS DU MODÈLE KHAL ENTRAÎNÉ")
+    print("RÉSULTATS DU MODÈLE KHAAL ENTRAÎNÉ")
     print("="*60)
 
     for prompt in prompts_test:
@@ -225,7 +225,7 @@ def tester_modele(dossier_modele: str):
 # ── Point d'entrée ────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Entraîne Khal sur GPT-2")
+    parser = argparse.ArgumentParser(description="Entraîne Khaal sur GPT-2")
     parser.add_argument("--epochs",   type=int, default=3,            help="Nombre d'epochs (défaut: 3)")
     parser.add_argument("--batch",    type=int, default=2,            help="Batch size (défaut: 2)")
     parser.add_argument("--modele",   type=str, default="gpt2",       help="Modèle de base HuggingFace (défaut: gpt2)")
@@ -235,7 +235,7 @@ def main():
     args = parser.parse_args()
 
     print("\n" + "█"*50)
-    print("  KHAL — ENTRAÎNEMENT ML")
+    print("  KHAAL — ENTRAÎNEMENT ML")
     print("█"*50 + "\n")
 
     verifier_deps()
@@ -252,9 +252,9 @@ def main():
     entrainer(modele, tokenizer, dataset_tok, args.epochs, args.batch, args.sortie)
     tester_modele(args.sortie)
 
-    print("\n🎯 Intègre le modèle dans Khal avec :")
+    print("\n🎯 Intègre le modèle dans Khaal avec :")
     print(f'   from transformers import pipeline')
-    print(f'   khal_ml = pipeline("text-generation", model="{args.sortie}")')
+    print(f'   khaal_ml = pipeline("text-generation", model="{args.sortie}")')
 
 
 if __name__ == "__main__":

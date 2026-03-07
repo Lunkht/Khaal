@@ -227,13 +227,13 @@ class MemoireIA:
 # MODULE 4 : INTERFACE PRINCIPALE - L'IA Assemblée
 # ============================================================
 
-class Khal:
+class Khaal:
     """
     L'IA principale qui assemble tous les modules.
     C'est le point d'entrée de ton générateur de texte.
     """
 
-    def __init__(self, nom: str = "Khal"):
+    def __init__(self, nom: str = "Khaal"):
         self.nom = nom
         self.markov = ModeleMarkov(ordre=2)
         self.generateur = GenerateurContenu()
@@ -282,7 +282,7 @@ class Khal:
 if __name__ == "__main__":
 
     # 1. Créer ton IA
-    ia = Khal("Khal_v1")
+    ia = Khaal("Khaal_v1")
 
     # 2. Lui apprendre un texte (corpus d'entraînement)
     corpus = """

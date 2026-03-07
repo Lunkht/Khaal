@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Khal — IA Générale</title>
+  <title>Khaal — IA Générale</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -17,7 +17,7 @@
       --accent2:   #28d1ff;
       --text:      rgba(255, 255, 255, 0.9);
       --text-dim:  rgba(255, 255, 255, 0.55);
-      --khal-msg:  rgba(15, 15, 38, 0.75);
+      --khaal-msg:  rgba(15, 15, 38, 0.75);
       --user-msg:  rgba(24, 24, 44, 0.75);
       --glow:      0 0 22px rgba(140, 108, 255, 0.28);
     }
@@ -412,7 +412,7 @@
       display: flex;
       gap: 5px;
       padding: 16px 20px;
-      background: var(--khal-msg);
+      background: var(--khaal-msg);
       border: 1px solid var(--border);
       border-left: 2px solid var(--accent);
       border-radius: 4px;
@@ -570,7 +570,7 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo-zone">
-      <div class="logo">KHAL</div>
+      <div class="logo">KHAAL</div>
       <div class="logo-sub">Intelligence Artificielle Générale</div>
     </div>
 
@@ -659,9 +659,9 @@
 
     <div class="messages" id="messages">
       <div class="welcome" id="welcome">
-        <div class="welcome-logo">KHAL</div>
+        <div class="welcome-logo">KHAAL</div>
         <div class="welcome-version">V1.0.0 // IA GÉNÉRALE</div>
-        <div class="welcome-desc">Intelligence artificielle générale. Posez une question, demandez une analyse, ou générez du contenu.</div>
+        <div class="welcome-desc">Bienvenue sur Khaal.</div>
         <div class="welcome-hint">↵ COMMENCEZ À TAPER POUR INTERAGIR</div>
       </div>
     </div>
@@ -791,7 +791,7 @@
       updateStats();
     } catch (err) {
       removeTyping();
-      appendMsg('khal', 'Erreur de connexion avec le serveur Khal.');
+      appendMsg('khal', 'Erreur de connexion avec le serveur Khaal.');
     }
   }
 
@@ -815,7 +815,7 @@
     // Re-add welcome
     messagesEl.innerHTML = `
       <div class="welcome" id="welcome" style="opacity:1">
-        <div class="welcome-logo">KHAL</div>
+        <div class="welcome-logo">KHAAL</div>
         <div class="welcome-version">V1.0.0 // IA GÉNÉRALE</div>
         <div class="welcome-desc">Nouvelle session initialisée.</div>
       </div>
@@ -824,16 +824,16 @@
 
   function exportChat() {
     const msgs = document.querySelectorAll('.msg');
-    let txt = 'KHAL — Export de conversation\n' + '='.repeat(40) + '\n\n';
+    let txt = 'KHAAL — Export de conversation\n' + '='.repeat(40) + '\n\n';
     msgs.forEach(m => {
-      const role = m.classList.contains('user') ? 'VOUS' : 'KHAL';
+      const role = m.classList.contains('user') ? 'VOUS' : 'KHAAL';
       const text = m.querySelector('.msg-bubble').innerText;
       txt += `[${role}]\n${text}\n\n`;
     });
     const blob = new Blob([txt], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'khal_conversation.txt';
+    a.href = url; a.download = 'khaal_conversation.txt';
     a.click();
     showNotif('EXPORT TÉLÉCHARGÉ');
   }

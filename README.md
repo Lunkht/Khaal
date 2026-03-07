@@ -1,11 +1,11 @@
-# 🤖 KHAL — Intelligence Artificielle Générale
+# 🤖 KHAAL — Intelligence Artificielle Générale
 
 ## Structure du projet
 
 ```
-khal/
+khaal/
 ├── app.py              ← Serveur Flask (point d'entrée)
-├── khal_core.py        ← Cerveau de Khal (modules IA)
+├── khal_core.py        ← Cerveau de Khaal (modules IA)
 ├── requirements.txt    ← Dépendances Python
 ├── khal_memoire.json   ← Créé automatiquement (mémoire persistante)
 └── templates/
@@ -20,7 +20,7 @@ khal/
 # 1. Installer les dépendances
 pip install -r requirements.txt
 
-# 2. Lancer Khal
+# 2. Lancer Khaal
 python app.py
 
 # 3. Ouvrir dans le navigateur
@@ -39,13 +39,13 @@ python app.py
 
 ### PythonAnywhere
 1. Va sur https://pythonanywhere.com
-2. Upload les fichiers dans `/home/user/khal/`
+2. Upload les fichiers dans `/home/user/khaal/`
 3. Configure une Web App Flask
 4. WSGI file : `from app import app as application`
 
 ---
 
-## 🧩 Capacités de Khal
+## 🧩 Capacités de Khaal
 
 | Capacité | Commande |
 |---|---|

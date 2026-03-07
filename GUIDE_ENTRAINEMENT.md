@@ -1,12 +1,12 @@
-# 🧠 Guide : Entraîner Khal avec du vrai Machine Learning
+# 🧠 Guide : Entraîner Khaal avec du vrai Machine Learning
 
 ## Vue d'ensemble
 
 ```
-DONNÉES  →  TOKENISATION  →  MODÈLE GPT-2  →  ENTRAÎNEMENT  →  KHAL ML
+DONNÉES  →  TOKENISATION  →  MODÈLE GPT-2  →  ENTRAÎNEMENT  →  KHAAL ML
 ```
 
-Khal utilise **GPT-2** (le précurseur de ChatGPT), un vrai modèle de génération
+Khaal utilise **GPT-2** (le précurseur de ChatGPT), un vrai modèle de génération
 de texte de 117 millions de paramètres, via HuggingFace Transformers.
 
 ---
@@ -17,7 +17,7 @@ de texte de 117 millions de paramètres, via HuggingFace Transformers.
 |---|---|
 | `khal_generer_donnees.py` | Génère le dataset d'entraînement |
 | `khal_entrainer.py` | Lance l'entraînement ML |
-| `Khal_Entrainement.ipynb` | Notebook Google Colab (recommandé) |
+| `Khaal_Entrainement.ipynb` | Notebook Google Colab (recommandé) |
 | `khal_dataset.jsonl` | Dataset généré (créé automatiquement) |
 | `khal_modele_entraine/` | Modèle entraîné (créé automatiquement) |
 
@@ -31,7 +31,7 @@ Colab t'en donne un gratuitement.
 ### Étapes
 
 1. Va sur **https://colab.research.google.com**
-2. Upload `Khal_Entrainement.ipynb`
+2. Upload `Khaal_Entrainement.ipynb`
 3. Active le GPU : `Exécution > Modifier le type d'exécution > GPU T4`
 4. Exécute les cellules une par une
 5. Télécharge le modèle entraîné à la fin
@@ -71,10 +71,10 @@ PAIRES_QA = [
     # Ajoute tes paires personnalisées ici !
     {
         "prompt": "Ta question ou phrase d'entrée",
-        "completion": "La réponse que tu veux que Khal donne"
+        "completion": "La réponse que tu veux que Khaal donne"
     },
     {
-        "prompt": "Khal, parle-moi de mon entreprise",
+        "prompt": "Khaal, parle-moi de mon entreprise",
         "completion": "Votre entreprise est spécialisée dans..."
     },
     # ... ajoute autant d'exemples que possible
@@ -100,7 +100,7 @@ PAIRES_QA = [
 
 ## 📈 Étapes suivantes après l'entraînement
 
-### Intégrer le modèle ML dans Khal (app Flask)
+### Intégrer le modèle ML dans Khaal (app Flask)
 
 Dans `khal_core.py`, remplace le `MoteurReponse` par :
 
@@ -133,5 +133,5 @@ class MoteurML:
 ### Aller encore plus loin
 
 - **Fine-tuner Mistral 7B** : modèle open-source bien plus puissant (nécessite plus de RAM)
-- **Utiliser l'API Anthropic** : brancher Claude directement dans Khal
-- **Collecter tes propres conversations** : chaque échange avec Khal peut devenir une donnée d'entraînement
+- **Utiliser l'API Anthropic** : brancher Claude directement dans Khaal
+- **Collecter tes propres conversations** : chaque échange avec Khaal peut devenir une donnée d'entraînement
