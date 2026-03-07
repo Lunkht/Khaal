@@ -5,9 +5,9 @@
 ```
 khaal/
 ├── app.py              ← Serveur Flask (point d'entrée)
-├── khal_core.py        ← Cerveau de Khaal (modules IA)
+├── khaal_core.py        ← Cerveau de Khaal (modules IA)
 ├── requirements.txt    ← Dépendances Python
-├── khal_memoire.json   ← Créé automatiquement (mémoire persistante)
+├── khaal_memoire.json   ← Créé automatiquement (mémoire persistante)
 └── templates/
     └── index.html      ← Interface web
 ```

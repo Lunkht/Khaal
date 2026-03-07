@@ -3,7 +3,7 @@ Khaal — Serveur Web Flask
 """
 
 from flask import Flask, render_template, request, jsonify, session
-from khal_core import Khaal
+from khaal_core import Khaal
 import os
 import secrets
 

@@ -102,7 +102,7 @@ PAIRES_QA = [
 
 ### Intégrer le modèle ML dans Khaal (app Flask)
 
-Dans `khal_core.py`, remplace le `MoteurReponse` par :
+Dans `khaal_core.py`, remplace le `MoteurReponse` par :
 
 ```python
 from transformers import pipeline
