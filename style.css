@@ -10,7 +10,9 @@
     --input-bg: #1c1c1c;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -79,6 +81,7 @@ body {
     padding: 4px;
     border-radius: 6px;
 }
+
 .sidebar-collapse:hover {
     color: var(--fg);
     background: var(--accent-hover);
@@ -147,6 +150,7 @@ body {
     cursor: pointer;
     font-family: inherit;
 }
+
 .sidebar-section-header:hover {
     color: var(--fg);
 }
@@ -161,10 +165,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding-left: 0px; 
+    padding-left: 0px;
     transition: max-height 0.3s ease;
     overflow: hidden;
 }
+
 .sidebar-section-body.collapsed {
     max-height: 0 !important;
 }
@@ -185,9 +190,11 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .sidebar-item-text:hover {
     background: var(--accent-hover);
 }
+
 .sidebar-item-text-icon {
     font-family: var(--font-mono, monospace);
     font-size: 18px;
@@ -210,6 +217,7 @@ body {
     border-radius: 50%;
     padding: 4px;
 }
+
 .user-avatar {
     width: 32px;
     height: 32px;
@@ -257,17 +265,21 @@ body {
     gap: 8px;
     transition: background 0.2s;
 }
+
 .top-nav-btn:hover {
     background: var(--accent-hover);
 }
+
 .top-nav-btn.primary {
     background: var(--fg);
     color: var(--bg);
     border-color: var(--fg);
 }
+
 .top-nav-btn.primary:hover {
     background: #e0e0e0;
 }
+
 .top-nav-icon {
     background: none;
     border: none;
@@ -280,6 +292,7 @@ body {
     border-radius: 50%;
     transition: background 0.2s;
 }
+
 .top-nav-icon:hover {
     background: var(--accent-hover);
 }
@@ -317,16 +330,19 @@ body {
 .logo-overlay {
     transition: opacity 0.3s;
 }
+
 .logo-flex {
     display: flex;
     align-items: center;
     gap: 16px;
 }
+
 .logo-flex .logo-text {
     font-size: 42px;
     font-weight: 600;
     letter-spacing: -1px;
 }
+
 .grok-logo-large {
     width: 48px;
     height: 48px;
@@ -360,11 +376,11 @@ body {
     align-items: center;
     padding: 12px 16px;
     gap: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .input-wrapper:focus-within {
-    border-color: rgba(255,255,255,0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .input-icon-btn {
@@ -379,15 +395,19 @@ body {
     border-radius: 50%;
     transition: background 0.2s;
 }
+
 .input-icon-btn:hover {
     background: var(--accent-hover);
 }
+
 .input-icon-btn.attach-btn {
     color: var(--fg-muted);
 }
+
 .input-icon-btn.attach-btn:hover {
     color: var(--fg);
 }
+
 .input-icon-btn.active-icon {
     background: var(--fg);
     color: var(--bg);
@@ -413,6 +433,7 @@ body {
     border-radius: 12px;
     transition: background 0.2s;
 }
+
 .dropdown-btn:hover {
     background: var(--accent-hover);
 }
@@ -432,6 +453,7 @@ body {
     padding: 6px 0;
     line-height: 1.4;
 }
+
 #user-input::placeholder {
     color: var(--fg-muted);
 }
@@ -442,10 +464,12 @@ body {
     color: var(--fg-muted);
     text-align: center;
 }
+
 .footer-note a {
     color: var(--fg);
     text-decoration: none;
 }
+
 .footer-note a:hover {
     text-decoration: underline;
 }
@@ -469,15 +493,18 @@ body {
     font-weight: 600;
     flex-shrink: 0;
 }
+
 .message-content {
     flex: 1;
     padding-top: 4px;
 }
+
 .message-sender {
     font-weight: 600;
     margin-bottom: 4px;
     font-size: 15px;
 }
+
 .message-text {
     font-size: 16px;
     line-height: 1.6;
@@ -492,6 +519,7 @@ body {
     background: var(--bg);
     display: flex;
 }
+
 .login-left {
     width: 100%;
     max-width: 500px;
@@ -501,9 +529,11 @@ body {
     border-right: 1px solid var(--border);
     background: var(--bg);
 }
+
 .login-logo-container {
     margin-bottom: auto;
 }
+
 .login-form-wrapper {
     margin: auto 0;
     display: flex;
@@ -513,12 +543,14 @@ body {
     max-width: 360px;
     align-self: center;
 }
+
 .login-form-wrapper h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 32px;
     text-align: center;
 }
+
 .auth-btn {
     width: 100%;
     display: flex;
@@ -534,41 +566,54 @@ body {
     margin-bottom: 16px;
     transition: background 0.2s, opacity 0.2s;
 }
+
 .x-btn {
     background: var(--fg);
     color: var(--bg);
     border: none;
 }
+
 .x-btn:hover {
     background: #e6e6e6;
 }
-.email-btn, .google-btn, .apple-btn {
+
+.email-btn,
+.google-btn,
+.apple-btn {
     background: transparent;
     color: var(--fg);
     border: 1px solid var(--border);
 }
-.email-btn:hover, .google-btn:hover, .apple-btn:hover {
+
+.email-btn:hover,
+.google-btn:hover,
+.apple-btn:hover {
     background: var(--accent-hover);
 }
+
 .divider {
     width: 100%;
     height: 1px;
     background: var(--border);
     margin: 8px 0 24px;
 }
+
 .signup-prompt {
     margin-top: 16px;
     font-size: 14px;
     color: var(--fg-muted);
 }
+
 .signup-prompt a {
     color: var(--fg);
     font-weight: 600;
     text-decoration: none;
 }
+
 .signup-prompt a:hover {
     text-decoration: underline;
 }
+
 .login-footer-terms {
     margin-top: 64px;
     font-size: 11px;
@@ -576,6 +621,7 @@ body {
     text-align: center;
     line-height: 1.5;
 }
+
 .login-footer-terms a {
     color: var(--fg);
     text-decoration: underline;
@@ -591,22 +637,35 @@ body {
     justify-content: center;
 }
 
-/* Emulate Grok large right-side glow */
+/* Emulate large right-side glow with Khaal logo */
 .login-right::before {
     content: '';
     position: absolute;
     width: 140%;
     height: 140%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff" opacity="0.03"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>');
+    background-image: url('icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    opacity: 0.04;
     transform: rotate(15deg) scale(1.5) translate(10%, -10%);
 }
 
 @media (max-width: 768px) {
-    .layout { flex-direction: column; }
-    .sidebar { display: none; }
-    .login-right { display: none; }
-    .login-left { max-width: 100%; border-right: none; }
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .login-right {
+        display: none;
+    }
+
+    .login-left {
+        max-width: 100%;
+        border-right: none;
+    }
 }
