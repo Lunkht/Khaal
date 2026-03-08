@@ -15,10 +15,18 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <div class="logo">KHAAL</div>
-        <div class="sidebar-title">Conversations</div>
-        <div class="conversation-list">
-            <div class="conversation-item active">Session Actuelle</div>
+        <div class="sidebar-top">
+            <div class="logo">KHAAL</div>
+
+            <button class="nav-item" id="new-chat">
+                <span class="icon">＋</span>
+                <span class="label">Nouvelle conversation</span>
+            </button>
+
+            <div class="sidebar-title">Conversations</div>
+            <div class="conversation-list" id="conversation-list">
+                <div class="conversation-item active">Session Actuelle</div>
+            </div>
         </div>
 
         <div class="sidebar-footer">
@@ -71,6 +79,8 @@
     const userInput = document.getElementById('user-input');
     const chatContainer = document.getElementById('chat-messages');
     const logoOverlay = document.getElementById('logo-overlay');
+    const newChatButton = document.getElementById('new-chat');
+    const conversationList = document.getElementById('conversation-list');
 
     // --- Theme Manager ---
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -93,6 +103,29 @@
         }
     });
 
+    newChatButton.addEventListener('click', () => {
+        clearChat();
+        setActiveConversation(null);
+        userInput.focus();
+    });
+
+    function clearChat() {
+        chatContainer.innerHTML = '';
+        userInput.value = '';
+        autoResize();
+        updateLogoVisibility();
+    }
+
+    function setActiveConversation(conversationElement) {
+        const items = conversationList.querySelectorAll('.conversation-item');
+        items.forEach((item) => item.classList.remove('active'));
+
+        if (conversationElement) {
+            conversationElement.classList.add('active');
+        } else if (items.length) {
+            items[0].classList.add('active');
+        }
+    }
 
     // --- Chat Logic ---
     sendButton.addEventListener('click', sendMessage);
