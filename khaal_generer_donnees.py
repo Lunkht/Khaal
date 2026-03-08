@@ -1,11 +1,11 @@
 """
-khal_generer_donnees.py
+khaal_generer_donnees.py
 =======================
 Génère automatiquement un dataset d'entraînement pour Khaal.
 Produit un fichier khaal_dataset.jsonl prêt à l'emploi.
 
 Usage:
-    python khal_generer_donnees.py
+    python khaal_generer_donnees.py
 """
 
 import json
@@ -148,4 +148,4 @@ if __name__ == "__main__":
     sauvegarder_jsonl(dataset)
     sauvegarder_json(dataset)
     afficher_stats(dataset)
-    print(f"\n🎯 Prochaine étape : lancer khal_entrainer.py")
+print("\n🎯 Prochaine étape : lancer khaal_entrainer.py")
