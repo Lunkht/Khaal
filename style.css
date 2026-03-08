@@ -3,11 +3,11 @@
     --font-mono: 'JetBrains Mono', 'Fira Code', 'cascadia code', 'source code pro', monospace;
 
     /* Dark Mode (Default) */
-    --bg: #0b0b0f;
-    --bg-alt: #131318;
-    --fg: #d9d9f0;
-    --fg-muted: #858599;
-    --border: #23232d;
+    --bg: #000000;
+    --bg-alt: #1a1a1a;
+    --fg: #ffffff;
+    --fg-muted: #a0a0a0;
+    --border: #333333;
     --accent: #8c6cff;
     --accent-fg: #ffffff;
     --accent-hover: #9f86ff;
@@ -120,6 +120,19 @@ body.light-mode .conversation-item.active {
 .sidebar-footer {
     margin-top: auto;
     position: relative;
+}
+
+#logo-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#logo-container img {
+    width: 150px;
+    opacity: 0.5;
 }
 
 

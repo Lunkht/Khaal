@@ -33,6 +33,11 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
+
+        <div id="logo-container">
+            <img src="logo.svg" alt="Khaal Logo">
+        </div>
+
         <div class="chat-area">
             <div class="chat-messages" id="chat-messages">
                 <!-- Messages will be appended here -->
@@ -64,6 +69,7 @@
     const sendButton = document.getElementById('send-button');
     const userInput = document.getElementById('user-input');
     const chatContainer = document.getElementById('chat-messages');
+    const logoContainer = document.getElementById('logo-container');
 
     // --- Theme Manager ---
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -97,7 +103,12 @@
         }
     });
 
-    userInput.addEventListener('input', autoResize);
+    userInput.addEventListener('input', () => {
+        if (logoContainer) {
+            logoContainer.style.display = 'none';
+        }
+        autoResize();
+    });
 
     function autoResize() {
         userInput.style.height = 'auto';
@@ -139,6 +150,10 @@
     }
 
     function appendMessage(sender, text) {
+        if (logoContainer) {
+            logoContainer.style.display = 'none';
+        }
+
         const messageEl = document.createElement('div');
         messageEl.className = `message ${sender}`;
 
