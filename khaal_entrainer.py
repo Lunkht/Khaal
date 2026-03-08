@@ -1,5 +1,5 @@
 """
-khal_entrainer.py
+khaal_entrainer.py
 =================
 Entraîne un vrai modèle de génération de texte (GPT-2)
 sur les données personnalisées de Khaal via HuggingFace Transformers.
@@ -8,8 +8,8 @@ Prérequis :
     pip install torch transformers datasets accelerate
 
 Usage :
-    python khal_entrainer.py
-    python khal_entrainer.py --epochs 5 --batch 4
+    python khaal_entrainer.py
+    python khaal_entrainer.py --epochs 5 --batch 4
 """
 
 import argparse
@@ -49,7 +49,7 @@ def charger_dataset(fichier: str = "khaal_dataset.jsonl") -> list:
     """Charge le dataset JSONL généré par khaal_generer_donnees.py"""
     if not os.path.exists(fichier):
         print(f"❌ Fichier introuvable : {fichier}")
-        print("   Lance d'abord : python khal_generer_donnees.py")
+        print("   Lance d'abord : python khaal_generer_donnees.py")
         exit(1)
 
     textes = []
@@ -230,7 +230,7 @@ def main():
     parser.add_argument("--batch",    type=int, default=2,            help="Batch size (défaut: 2)")
     parser.add_argument("--modele",   type=str, default="gpt2",       help="Modèle de base HuggingFace (défaut: gpt2)")
     parser.add_argument("--dataset",  type=str, default="khaal_dataset.jsonl")
-    parser.add_argument("--sortie",   type=str, default="khal_modele_entraine")
+    parser.add_argument("--sortie",   type=str, default="khaal_modele_entraine")
     parser.add_argument("--test-seulement", action="store_true",      help="Tester un modèle déjà entraîné")
     args = parser.parse_args()
 

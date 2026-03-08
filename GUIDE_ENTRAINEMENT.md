@@ -15,11 +15,11 @@ de texte de 117 millions de paramètres, via HuggingFace Transformers.
 
 | Fichier | Rôle |
 |---|---|
-| `khal_generer_donnees.py` | Génère le dataset d'entraînement |
-| `khal_entrainer.py` | Lance l'entraînement ML |
+| `khaal_generer_donnees.py` | Génère le dataset d'entraînement |
+| `khaal_entrainer.py` | Lance l'entraînement ML |
 | `Khaal_Entrainement.ipynb` | Notebook Google Colab (recommandé) |
 | `khaal_dataset.jsonl` | Dataset généré (créé automatiquement) |
-| `khal_modele_entraine/` | Modèle entraîné (créé automatiquement) |
+| `khaal_modele_entraine/` | Modèle entraîné (créé automatiquement) |
 
 ---
 
@@ -47,13 +47,13 @@ Colab t'en donne un gratuitement.
 pip install torch transformers datasets accelerate
 
 # 2. Générer le dataset
-python khal_generer_donnees.py
+python khaal_generer_donnees.py
 
 # 3. Entraîner (avec options)
-python khal_entrainer.py --epochs 3 --batch 2
+python khaal_entrainer.py --epochs 3 --batch 2
 
 # 4. Tester uniquement (après entraînement)
-python khal_entrainer.py --test-seulement
+python khaal_entrainer.py --test-seulement
 ```
 
 > ⚠️ Sans GPU, l'entraînement peut prendre plusieurs heures sur CPU.
@@ -108,7 +108,7 @@ Dans `khaal_core.py`, remplace le `MoteurReponse` par :
 from transformers import pipeline
 
 class MoteurML:
-    def __init__(self, dossier_modele="khal_modele_entraine"):
+    def __init__(self, dossier_modele="khaal_modele_entraine"):
         self.generateur = pipeline(
             "text-generation",
             model=dossier_modele,
