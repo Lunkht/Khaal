@@ -33,6 +33,12 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
+        <div class="logo-overlay" id="logo-overlay" aria-hidden="true">
+            <div class="logo-center">
+                <div class="logo-text">KHAAL</div>
+                <div class="logo-sub">IA Générale</div>
+            </div>
+        </div>
         <div class="chat-area">
             <div class="chat-messages" id="chat-messages">
                 <!-- Messages will be appended here -->
@@ -64,6 +70,7 @@
     const sendButton = document.getElementById('send-button');
     const userInput = document.getElementById('user-input');
     const chatContainer = document.getElementById('chat-messages');
+    const logoOverlay = document.getElementById('logo-overlay');
 
     // --- Theme Manager ---
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -97,11 +104,26 @@
         }
     });
 
-    userInput.addEventListener('input', autoResize);
+    userInput.addEventListener('input', () => {
+        autoResize();
+        updateLogoVisibility();
+    });
 
     function autoResize() {
         userInput.style.height = 'auto';
         userInput.style.height = userInput.scrollHeight + 'px';
+    }
+
+    function updateLogoVisibility() {
+        const hasText = userInput.value.trim().length > 0;
+        const hasMessages = chatContainer.children.length > 0;
+        const shouldHide = hasText || hasMessages;
+
+        if (shouldHide) {
+            logoOverlay.style.opacity = '0';
+        } else {
+            logoOverlay.style.opacity = '1';
+        }
     }
 
     async function sendMessage() {
@@ -211,6 +233,9 @@
     function scrollToBottom() {
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
+
+    // Initial UI state
+    updateLogoVisibility();
 
     // Initial focus
     userInput.focus();
