@@ -44,6 +44,7 @@
 
         <div class="sidebar-section">
             <button class="sidebar-section-header" id="projects-toggle">
+                <span class="icon">🗂️</span>
                 <span>Projets</span>
                 <span class="sidebar-section-caret">▾</span>
             </button>
@@ -57,6 +58,7 @@
 
         <div class="sidebar-section">
             <button class="sidebar-section-header" id="history-toggle">
+                <span class="icon">🕑</span>
                 <span>Historique</span>
                 <span class="sidebar-section-caret">▾</span>
             </button>
@@ -64,9 +66,22 @@
         </div>
 
         <div class="sidebar-footer">
-            <div class="user-avatar" id="user-avatar" title="Profil">
-                <span>👤</span>
-            </div>
+            <button class="sidebar-item" id="login-btn">
+                <span class="sidebar-item-icon">🔑</span>
+                <span class="sidebar-item-label">Se connecter</span>
+            </button>
+            <button class="sidebar-item" id="signup-btn">
+                <span class="sidebar-item-icon">🧾</span>
+                <span class="sidebar-item-label">Inscription</span>
+            </button>
+            <button class="sidebar-item" id="settings-btn">
+                <span class="sidebar-item-icon">⚙️</span>
+                <span class="sidebar-item-label">Paramètres</span>
+            </button>
+            <button class="sidebar-item" id="theme-toggle">
+                <span class="sidebar-item-icon" id="theme-icon">🌙</span>
+                <span class="sidebar-item-label">Thème</span>
+            </button>
         </div>
     </aside>
 
@@ -204,7 +219,6 @@
 
     const settingsThemeSelect = document.getElementById('settings-theme');
     const settingsUsername = document.getElementById('settings-username');
-    const collapseBtn = document.getElementById('collapse-btn');
 
     const STORAGE_KEY = 'khaal_app_state_v1';
 
@@ -278,7 +292,6 @@
             item.textContent = conv.title || 'Conversation';
             item.addEventListener('click', () => {
                 setActiveConversation(conv.id);
-                closePanel();
             });
             historyList.appendChild(item);
         });
@@ -356,11 +369,13 @@
     function setUser(user) {
         state.user = user;
         saveState();
+        const loginLabel = loginBtn.querySelector('.sidebar-item-label');
+
         if (user && user.name) {
-            loginBtn.textContent = user.name;
+            if (loginLabel) loginLabel.textContent = user.name;
             signupBtn.style.display = 'none';
         } else {
-            loginBtn.textContent = 'Se connecter';
+            if (loginLabel) loginLabel.textContent = 'Se connecter';
             signupBtn.style.display = 'inline-flex';
         }
     }
@@ -374,6 +389,12 @@
             themeIcon.textContent = '☀️';
         }
         localStorage.setItem('theme', theme);
+    }
+
+    function updateCollapseButton() {
+        const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+        collapseBtn.textContent = isCollapsed ? '»' : '«';
+        collapseBtn.setAttribute('aria-label', isCollapsed ? 'Ouvrir la sidebar' : 'Réduire la sidebar');
     }
 
     function init() {
@@ -400,10 +421,12 @@
         if (localStorage.getItem('sidebar_collapsed') === 'true') {
             document.body.classList.add('sidebar-collapsed');
         }
+        updateCollapseButton();
 
         collapseBtn.addEventListener('click', () => {
             document.body.classList.toggle('sidebar-collapsed');
             localStorage.setItem('sidebar_collapsed', document.body.classList.contains('sidebar-collapsed'));
+            updateCollapseButton();
         });
 
         // Event listeners
