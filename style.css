@@ -997,3 +997,35 @@ body.light-mode .modal-body select {
         padding: 16px;
     }
 }
+
+/* ─── COLLAPSIBLE SIDEBAR ─── */
+.sidebar {
+    transition: width 0.2s ease-in-out;
+    will-change: width;
+}
+
+body.sidebar-collapsed .sidebar {
+    width: 90px;
+}
+
+body.sidebar-collapsed .sidebar .brand-name,
+body.sidebar-collapsed .sidebar .sidebar-btn span:not(.icon) {
+    display: none;
+}
+
+body.sidebar-collapsed .sidebar .sidebar-brand {
+    justify-content: center;
+}
+
+body.sidebar-collapsed .sidebar .sidebar-btn {
+    justify-content: center;
+    padding: 10px;
+}
+
+#collapse-btn .icon {
+    transition: transform 0.2s ease-in-out;
+}
+
+body.sidebar-collapsed #collapse-btn .icon {
+    transform: rotate(180deg);
+}

@@ -13,25 +13,60 @@
 
 <div class="layout">
 
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <div class="brand-icon">⚡</div>
-            <div class="brand-name">Khaal</div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-logo">
+                <div class="brand-icon">⚡</div>
+                <div class="brand-name">Khaal</div>
+            </div>
+            <button class="sidebar-collapse" id="collapse-btn" aria-label="Réduire la sidebar">«</button>
+        </div>
+
+        <div class="sidebar-search">
+            <span class="sidebar-search-icon">🔍</span>
+            <input id="sidebar-search" placeholder="Rechercher" />
         </div>
 
         <nav class="sidebar-nav">
-            <button class="sidebar-btn" id="imagine-btn">Imagine</button>
-            <button class="sidebar-btn" id="history-btn">Historique</button>
-            <button class="sidebar-btn" id="settings-btn">Paramètres</button>
-            <button class="sidebar-btn" id="theme-toggle">
-                <span>Thème</span>
-                <span class="icon" id="theme-icon">☀️</span>
+            <button class="sidebar-item active" data-section="chat" id="chat-btn">
+                <span class="sidebar-item-icon">💬</span>
+                <span class="sidebar-item-label">Chat</span>
+            </button>
+            <button class="sidebar-item" data-section="voice" id="voice-btn">
+                <span class="sidebar-item-icon">🎙️</span>
+                <span class="sidebar-item-label">Voix</span>
+            </button>
+            <button class="sidebar-item" data-section="imagine" id="imagine-btn">
+                <span class="sidebar-item-icon">🎨</span>
+                <span class="sidebar-item-label">Imagine</span>
             </button>
         </nav>
 
-        <div class="sidebar-bottom">
-            <button class="sidebar-btn" id="login-btn">Se connecter</button>
-            <button class="sidebar-btn primary" id="signup-btn">S'inscrire</button>
+        <div class="sidebar-section">
+            <button class="sidebar-section-header" id="projects-toggle">
+                <span>Projets</span>
+                <span class="sidebar-section-caret">▾</span>
+            </button>
+            <div class="sidebar-section-body" id="projects-list">
+                <button class="sidebar-item small" id="new-project-btn">
+                    <span class="sidebar-item-icon">＋</span>
+                    <span class="sidebar-item-label">Nouveau projet</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <button class="sidebar-section-header" id="history-toggle">
+                <span>Historique</span>
+                <span class="sidebar-section-caret">▾</span>
+            </button>
+            <div class="sidebar-section-body" id="history-list"></div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-avatar" id="user-avatar" title="Profil">
+                <span>👤</span>
+            </div>
         </div>
     </aside>
 
@@ -63,18 +98,7 @@
         </div>
     </main>
 
-    <div class="panel-overlay" id="panel-overlay" aria-hidden="true"></div>
-
-    <aside class="history-panel" id="history-panel" aria-hidden="true">
-        <div class="panel-header">
-            <div class="panel-title">Historique</div>
-            <button class="panel-close" id="history-close" aria-label="Fermer">×</button>
-        </div>
-        <div class="panel-content">
-            <button class="panel-action" id="new-conversation">+ Nouvelle conversation</button>
-            <div class="conversation-list" id="history-list"></div>
-        </div>
-    </aside>
+    <div class="modal-overlay" id="modal-overlay" aria-hidden="true"></div>
 
     <div class="modal" id="modal-login" aria-hidden="true">
         <div class="modal-content">
@@ -155,23 +179,32 @@
     const chatContainer = document.getElementById('chat-messages');
     const logoOverlay = document.getElementById('logo-overlay');
 
-    const historyBtn = document.getElementById('history-btn');
-    const historyPanel = document.getElementById('history-panel');
-    const historyClose = document.getElementById('history-close');
-    const panelOverlay = document.getElementById('panel-overlay');
+    const sidebar = document.getElementById('sidebar');
+    const collapseBtn = document.getElementById('collapse-btn');
+    const searchInput = document.getElementById('sidebar-search');
+
+    const chatBtn = document.getElementById('chat-btn');
+    const voiceBtn = document.getElementById('voice-btn');
+    const imagineBtn = document.getElementById('imagine-btn');
+
+    const projectsToggle = document.getElementById('projects-toggle');
+    const projectsList = document.getElementById('projects-list');
+    const historyToggle = document.getElementById('history-toggle');
     const historyList = document.getElementById('history-list');
-    const newConversationBtn = document.getElementById('new-conversation');
+    const newProjectBtn = document.getElementById('new-project-btn');
 
     const loginBtn = document.getElementById('login-btn');
     const signupBtn = document.getElementById('signup-btn');
     const settingsBtn = document.getElementById('settings-btn');
 
+    const modalOverlay = document.getElementById('modal-overlay');
     const modalLogin = document.getElementById('modal-login');
     const modalSignup = document.getElementById('modal-signup');
     const modalSettings = document.getElementById('modal-settings');
 
     const settingsThemeSelect = document.getElementById('settings-theme');
     const settingsUsername = document.getElementById('settings-username');
+    const collapseBtn = document.getElementById('collapse-btn');
 
     const STORAGE_KEY = 'khaal_app_state_v1';
 
@@ -306,32 +339,18 @@
         updateActiveConversationTitle();
     }
 
-    function openPanel() {
-        historyPanel.setAttribute('aria-hidden', 'false');
-        panelOverlay.setAttribute('aria-hidden', 'false');
-        historyPanel.classList.add('open');
-        panelOverlay.classList.add('visible');
-    }
-
-    function closePanel() {
-        historyPanel.setAttribute('aria-hidden', 'true');
-        panelOverlay.setAttribute('aria-hidden', 'true');
-        historyPanel.classList.remove('open');
-        panelOverlay.classList.remove('visible');
-    }
-
     function openModal(modal) {
         modal.setAttribute('aria-hidden', 'false');
         modal.classList.add('open');
-        panelOverlay.setAttribute('aria-hidden', 'false');
-        panelOverlay.classList.add('visible');
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        modalOverlay.classList.add('visible');
     }
 
     function closeModal(modal) {
         modal.setAttribute('aria-hidden', 'true');
         modal.classList.remove('open');
-        panelOverlay.setAttribute('aria-hidden', 'true');
-        panelOverlay.classList.remove('visible');
+        modalOverlay.setAttribute('aria-hidden', 'true');
+        modalOverlay.classList.remove('visible');
     }
 
     function setUser(user) {
@@ -377,32 +396,56 @@
             settingsUsername.value = state.user.name;
         }
 
+        // Sidebar collapse logic
+        if (localStorage.getItem('sidebar_collapsed') === 'true') {
+            document.body.classList.add('sidebar-collapsed');
+        }
+
+        collapseBtn.addEventListener('click', () => {
+            document.body.classList.toggle('sidebar-collapsed');
+            localStorage.setItem('sidebar_collapsed', document.body.classList.contains('sidebar-collapsed'));
+        });
+
         // Event listeners
         themeToggle.addEventListener('click', () => {
             const next = body.classList.contains('dark-mode') ? 'light' : 'dark';
             applyTheme(next);
         });
 
-        historyBtn.addEventListener('click', () => {
-            openPanel();
-        });
-        historyClose.addEventListener('click', closePanel);
-        panelOverlay.addEventListener('click', () => {
-            closePanel();
-            closeModal(modalLogin);
-            closeModal(modalSignup);
-            closeModal(modalSettings);
+        const setActiveMenu = (activeBtn) => {
+            [chatBtn, voiceBtn, imagineBtn].forEach((btn) => {
+                btn.classList.toggle('active', btn === activeBtn);
+            });
+        };
+
+        chatBtn.addEventListener('click', () => setActiveMenu(chatBtn));
+        voiceBtn.addEventListener('click', () => setActiveMenu(voiceBtn));
+        imagineBtn.addEventListener('click', () => setActiveMenu(imagineBtn));
+
+        projectsToggle.addEventListener('click', () => {
+            projectsList.classList.toggle('collapsed');
+            projectsToggle.querySelector('.sidebar-section-caret').classList.toggle('rotated');
         });
 
-        newConversationBtn.addEventListener('click', () => {
+        historyToggle.addEventListener('click', () => {
+            historyList.classList.toggle('collapsed');
+            historyToggle.querySelector('.sidebar-section-caret').classList.toggle('rotated');
+        });
+
+        newProjectBtn.addEventListener('click', () => {
             createConversation('Nouvelle conversation');
-            closePanel();
             userInput.focus();
         });
 
         loginBtn.addEventListener('click', () => openModal(modalLogin));
         signupBtn.addEventListener('click', () => openModal(modalSignup));
         settingsBtn.addEventListener('click', () => openModal(modalSettings));
+
+        modalOverlay.addEventListener('click', () => {
+            closeModal(modalLogin);
+            closeModal(modalSignup);
+            closeModal(modalSettings);
+        });
 
         document.querySelectorAll('.modal-close').forEach((btn) => {
             const modalId = btn.getAttribute('data-modal');
