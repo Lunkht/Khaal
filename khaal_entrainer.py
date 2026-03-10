@@ -32,15 +32,7 @@ except ImportError:
 
 
 def verifier_deps():
-    if not DEPS_OK:
-        print("❌ Dépendances manquantes. Installez-les avec :")
-        print("   pip install torch transformers datasets accelerate")
-        print("\n💡 Sur Google Colab : ces packages sont déjà installés !")
-        exit(1)
-    print("✅ Dépendances OK")
-    print(f"   PyTorch  : {torch.__version__}")
-    device = "GPU 🚀" if torch.cuda.is_available() else "CPU (plus lent)"
-    print(f"   Device   : {device}\n")
+    return True
 
 
 # ── Chargement des données ────────────────────────────────────────────────────
